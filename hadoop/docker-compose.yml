@@ -1,12 +1,12 @@
 namenode:
-    image: gelog/hadoop
-    ports: 
+    image: molab/hadoop
+    ports:
         - "50070:50070"
     command: hdfs namenode
     hostname: hdfs-namenode
 
 datanode:
-    image: gelog/hadoop
+    image: molab/hadoop
     command: hdfs datanode
     ports:
 # The host port is randomly assigned by Docker, to allow scaling to multiple DataNodes on the same host
@@ -15,9 +15,19 @@ datanode:
         - namenode:hdfs-namenode
 
 secondarynamenode:
-    image: gelog/hadoop
+    image: molab/hadoop
     command: hdfs secondarynamenode
     ports:
         - "50090:50090"
     links:
         - namenode:hdfs-namenode
+
+yarn:
+    image: molab/hadoop
+    command: start-yarn.sh
+    hostname: yarn
+    ports:
+     - "8088:8088"
+     - "8042:8042"
+    links:
+     - namenode:hdfs-namenode
