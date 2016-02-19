@@ -30,7 +30,7 @@ docker run --rm -ti --link=hadoop_yarn_1:yarn --link=hadoop_namenode_1:namenode 
 docker build -t molab/spark-notebook notebook
 ```
 
-## Run a spark shell
+## Run a notebook
 
 ```
 docker run --rm -ti --link=hadoop_yarn_1:yarn --link=hadoop_namenode_1:namenode molab/spark-notebook
