@@ -35,3 +35,10 @@ docker build -t molab/spark-notebook notebook
 ```
 docker run --rm -ti --link=hadoop_yarn_1:yarn --link=hadoop_namenode_1:namenode molab/spark-notebook
 ```
+
+In the notebook run
+
+```
+from pyspark import SparkContext
+sc = SparkContext(master="yarn-client")
+```
